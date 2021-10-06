@@ -6,9 +6,6 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-
-    <context:property-placeholder location="musicPlayer.properties"/>
-
     <bean id="musicBean"
           class="ua.zhekon.RockMusic">
     </bean>
@@ -16,10 +13,6 @@
           class="ua.zhekon.MusicPlayer">
 <!--        <constructor-arg ref="musicBean"/>-->
         <property name="music" ref="musicBean"/>
-<!--        <property name="name" value="some name"/>-->
-<!--        <property name="volume" value="50"/>-->
-        <property name="name" value="${mmusicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>
