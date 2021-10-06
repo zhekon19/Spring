@@ -1,6 +1,15 @@
 package ua.zhekon;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MusicPlayer {
+    private List<Music> musicList = new ArrayList<>();
+
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
     private Music music;
     private String name;
     private int volume;
@@ -36,5 +45,10 @@ public class MusicPlayer {
 
     public void playMusic() {
         System.out.println(music.getSong());
+    }
+    public void playMusicList(){
+        for (Music music : musicList) {
+            System.out.println(music.getSong());
+        }
     }
 }

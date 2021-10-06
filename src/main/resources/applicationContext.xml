@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
@@ -12,14 +12,40 @@
     <bean id="musicBean"
           class="ua.zhekon.RockMusic">
     </bean>
+
+    <bean id="rockMusicBean"
+          class="ua.zhekon.RockMusic">
+    </bean>
+
+    <bean id="classicalMusicBean"
+          class="ua.zhekon.ClassicalMusic">
+    </bean>
+
+    <bean id="countryMusicBean"
+    class="ua.zhekon.CountryMusic">
+
+    </bean>
+
     <bean id="musicPlayerBean"
           class="ua.zhekon.MusicPlayer">
-<!--        <constructor-arg ref="musicBean"/>-->
+        <!--        <constructor-arg ref="musicBean"/>-->
         <property name="music" ref="musicBean"/>
-<!--        <property name="name" value="some name"/>-->
-<!--        <property name="volume" value="50"/>-->
+        <!--        <property name="name" value="some name"/>-->
+        <!--        <property name="volume" value="50"/>-->
         <property name="name" value="${mmusicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
+    <bean id="musicPlayerListBean"
+          class="ua.zhekon.MusicPlayer">
+        <property name="musicList">
+            <list>
+                <ref bean="rockMusicBean"/>
+                <ref bean="classicalMusicBean"/>
+                <ref bean="countryMusicBean"/>
+            </list>
+        </property>
+        <property name="name" value="List Name"/>
+        <property name="volume" value="48"/>
     </bean>
 
 </beans>
