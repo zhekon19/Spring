@@ -14,9 +14,8 @@ public class TestSpring {
 //        MusicPlayer musicPlayer = context.getBean("musicPlayer",MusicPlayer.class);
 //        context.close();
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        musicPlayer.playMusic(Ganre.ROCK);
-        System.out.println(musicPlayer.getVolume());
+        MusicPlayerClassical musicPlayerClassical = context.getBean("musicPlayerClassical", MusicPlayerClassical.class);
+        musicPlayerClassical.playMusic();
         context.close();
     }
 }

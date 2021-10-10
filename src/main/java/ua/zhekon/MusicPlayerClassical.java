@@ -4,35 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
 public class MusicPlayerClassical {
-    String name;
-    int volume;
+    List<Music> listOfMusic = new ArrayList<>();
 
-    Music music;
-
-    @Autowired
-    public MusicPlayerClassical(@Qualifier("classicalMusic") Music music) {
-        this.music = music;
+    public MusicPlayerClassical(List<Music> listOfMusic) {
+        this.listOfMusic = listOfMusic;
     }
-
-    public void playMusic() {
-        System.out.println(music.getSong());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
+    public void playMusic(){
+        listOfMusic.stream()
+                .map(Music::getSong)
+                .flatMap(song -> song.stream())
+                .forEach(System.out::println);
     }
 }

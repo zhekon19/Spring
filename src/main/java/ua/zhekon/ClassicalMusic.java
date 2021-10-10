@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Component
+
 public class ClassicalMusic implements Music {
     Ganre ganre = Ganre.CLASSICAL;
     List<String> list = new ArrayList<>();
