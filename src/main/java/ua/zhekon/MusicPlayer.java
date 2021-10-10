@@ -1,54 +1,63 @@
 package ua.zhekon;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component
+@Scope("singleton")
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
+    String name;
+    @Value("${musicPlayer.volume}")
+    int volume;
 
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
+    private Music classicalMusic;
+    private Music rockMusic;
+
+    @PostConstruct
+    public void preInit() {
+        System.out.println("Music Player is init");
+    }
+    @PreDestroy
+    public void destroy(){
+        System.out.println("Music player vas destroy");
     }
 
-    private Music music;
-    private String name;
-    private int volume;
-
-
-    public MusicPlayer() {
-    }
-
-    public MusicPlayer(Music music) {
-        this.music = music;
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
-
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
+    @Autowired
+    public MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic, @Qualifier("rockMusic") Music rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
     }
 
     public String getName() {
         return name;
     }
 
+    @Value("${musicPlayer.name}")
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getVolume() {
         return volume;
     }
 
-    public void playMusic() {
-        System.out.println(music.getSong());
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
-    public void playMusicList(){
-        for (Music music : musicList) {
-            System.out.println(music.getSong());
+
+    public void playMusic(Ganre ganre) {
+        if (ganre == Ganre.CLASSICAL) {
+
+            classicalMusic.getSong().forEach(System.out::println);
+        } else if (ganre == Ganre.ROCK) {
+            rockMusic.getSong().forEach(System.out::println);
         }
     }
+
 }

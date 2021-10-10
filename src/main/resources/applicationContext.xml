@@ -1,51 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--        http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--        http://www.springframework.org/schema/context-->
+<!--        http://www.springframework.org/schema/context/spring-context.xsd">-->
+<!--    <context:component-scan base-package="ua.zhekon"/>-->
+<!--    <context:property-placeholder location="classpath:musicPlayer.properties"/>-->
+<!--    <context:property-placeholder location="musicPlayer.properties"/>-->
+<!--        <bean id="musicBean"-->
+<!--              class="ua.zhekon.RockMusic"-->
+<!--              scope="prototype">-->
+<!--        </bean>-->
 
-    <context:property-placeholder location="musicPlayer.properties"/>
+<!--    <bean id="rockMusicBean"-->
+<!--          class="ua.zhekon.RockMusic"-->
+<!--          scope="singleton"-->
+<!--          factory-method="getInstance"-->
+<!--          init-method="miInitMethod"-->
+<!--          destroy-method="myDestroyMethod">-->
 
-    <bean id="musicBean"
-          class="ua.zhekon.RockMusic">
-    </bean>
+<!--    </bean>-->
 
-    <bean id="rockMusicBean"
-          class="ua.zhekon.RockMusic">
-    </bean>
+<!--    <bean id="classicalMusicBean"-->
+<!--          class="ua.zhekon.ClassicalMusic">-->
+<!--    </bean>-->
 
-    <bean id="classicalMusicBean"
-          class="ua.zhekon.ClassicalMusic">
-    </bean>
+<!--    <bean id="countryMusicBean"-->
+<!--          class="ua.zhekon.CountryMusic">-->
+<!--    </bean>-->
 
-    <bean id="countryMusicBean"
-    class="ua.zhekon.CountryMusic">
+<!--    <bean id="musicPlayerBean"-->
+<!--          class="ua.zhekon.MusicPlayer">-->
+<!--        <property name="music" ref="rockMusicBean"/>-->
+<!--        &lt;!&ndash;        <property name="name" value="some name"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <property name="volume" value="50"/>&ndash;&gt;-->
+<!--        <property name="name" value="${musicPlayer.name}"/>-->
+<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+<!--    </bean>-->
+<!--    <bean id="musicPlayerListBean"-->
+<!--          class="ua.zhekon.MusicPlayer">-->
+<!--        <property name="musicList">-->
+<!--            <list>-->
+<!--                <ref bean="rockMusicBean"/>-->
+<!--                <ref bean="classicalMusicBean"/>-->
+<!--                <ref bean="countryMusicBean"/>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="name" value="List Name"/>-->
+<!--        <property name="volume" value="48"/>-->
+<!--    </bean>-->
 
-    </bean>
-
-    <bean id="musicPlayerBean"
-          class="ua.zhekon.MusicPlayer">
-        <!--        <constructor-arg ref="musicBean"/>-->
-        <property name="music" ref="musicBean"/>
-        <!--        <property name="name" value="some name"/>-->
-        <!--        <property name="volume" value="50"/>-->
-        <property name="name" value="${mmusicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
-    <bean id="musicPlayerListBean"
-          class="ua.zhekon.MusicPlayer">
-        <property name="musicList">
-            <list>
-                <ref bean="rockMusicBean"/>
-                <ref bean="classicalMusicBean"/>
-                <ref bean="countryMusicBean"/>
-            </list>
-        </property>
-        <property name="name" value="List Name"/>
-        <property name="volume" value="48"/>
-    </bean>
-
-</beans>
+<!--</beans>-->
